@@ -6,18 +6,18 @@ const FETCH_ERROR = 'FETCH_ERROR';
 
 const initialState = {
   loading: true,
-  forex: [],
+  details: {},
   error: null,
-  details: [],
 };
 
 export const fetchLoading = () => ({
   type: FETCH_LOADING,
 });
 
-export const fetchSuccessRates = (payload) => ({
+export const fetchSuccessRates = (payload, currency) => ({
   type: FETCH_SUCCESS_RATES,
   payload,
+  currency,
 });
 
 export const fetchError = (payload) => ({
@@ -25,12 +25,12 @@ export const fetchError = (payload) => ({
   payload,
 });
 
-export const fetchRequestForexRates = (base = 'usd') => async (dispatch) => {
+export const fetchRequestForexDetails = (currency) => async (dispatch) => {
   dispatch(fetchLoading());
-  latestRates(base)
+  latestRates(currency)
     .then((result) => {
       dispatch(
-        fetchSuccessRates(result),
+        fetchSuccessRates(result, currency),
       );
     })
     .catch((error) => {
@@ -42,22 +42,28 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LOADING:
       return {
-        forex: [...state.forex],
+        details: { ...state.details },
         loading: true,
         error: null,
       };
 
     case FETCH_SUCCESS_RATES:
+      if (!action.currency) {
+        return {
+          loading: false,
+          details: { ...state.details },
+          error: null,
+        };
+      }
       return {
         loading: false,
-        forex: action.payload,
+        details: { ...state.details, [action.currency]: action.payload },
         error: null,
       };
-
     case FETCH_ERROR:
       return {
         loading: false,
-        forex: [],
+        details: [],
         error: action.payload,
       };
     default:

@@ -1,7 +1,7 @@
-import Card from '../Card';
-
 /* eslint-disable react/prop-types */
-const Home = ({ data }) => {
+import DetailsCard from './DetailsCard';
+
+const CurrencyExchangeRates = ({ currency, data }) => {
   if (data.loading) {
     return (
       <p>loading</p>
@@ -12,21 +12,22 @@ const Home = ({ data }) => {
       <p>error</p>
     );
   }
-  const rates = Object.entries(data.forex.rates);
+  if (!data.details[currency]) {
+    return (
+      <p>No Result for this currency</p>
+    );
+  }
+  const rates = Object.entries(data.details[currency].rates);
   return (
     <div className="flex flex-col">
       <p>
         Last Update:
-        {data.forex.date}
-      </p>
-      <p>
-        Base Currency:
-        {data.forex.base}
+        {data.details[currency].date}
       </p>
       <div className="grid grid-cols-2 md:grid-cols-6">
         {rates.map((rate) => (
           <div key={rate[0]}>
-            <Card name={rate[0]} value={rate[1]} />
+            <DetailsCard name={rate[0]} value={rate[1]} />
           </div>
         ))}
       </div>
@@ -34,4 +35,4 @@ const Home = ({ data }) => {
   );
 };
 
-export default Home;
+export default CurrencyExchangeRates;
