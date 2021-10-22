@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchRequestForexExchange } from '../../redux/forexData/forexExchange';
@@ -18,6 +18,14 @@ const Details = ({ match }) => {
       <CurrencyExchangeRates currency={currencyName} data={forexRates} />
     </div>
   );
+};
+
+Details.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      currencyName: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 };
 
 export default Details;

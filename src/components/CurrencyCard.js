@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
+
 const CurrencyCard = ({ name, rate, baseCurrency }) => (
   <div className="rounded overflow-hidden shadow-lg cursor-pointer">
     <div className="px-6 py-4">
@@ -12,5 +13,11 @@ const CurrencyCard = ({ name, rate, baseCurrency }) => (
     </div>
   </div>
 );
+
+CurrencyCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  rate: PropTypes.string.isRequired,
+  baseCurrency: PropTypes.string.isRequired,
+};
 
 export default CurrencyCard;

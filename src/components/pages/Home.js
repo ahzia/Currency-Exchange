@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import CurrencyCard from '../CurrencyCard';
 
-/* eslint-disable react/prop-types */
 const Home = ({ data }) => {
   if (data.loading) {
     return (
@@ -43,6 +43,10 @@ const Home = ({ data }) => {
       </div>
     </div>
   );
+};
+
+Home.propTypes = {
+  data: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default Home;

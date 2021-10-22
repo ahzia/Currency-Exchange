@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import ExchangeCard from './ExchangeCard';
 
 const CurrencyExchangeRates = ({ currency, data }) => {
@@ -33,6 +33,11 @@ const CurrencyExchangeRates = ({ currency, data }) => {
       </div>
     </div>
   );
+};
+
+CurrencyExchangeRates.propTypes = {
+  data: PropTypes.instanceOf(Array).isRequired,
+  currency: PropTypes.string.isRequired,
 };
 
 export default CurrencyExchangeRates;
