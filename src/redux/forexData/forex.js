@@ -6,7 +6,7 @@ const FETCH_ERROR = 'FETCH_ERROR';
 
 const initialState = {
   loading: true,
-  forex: [],
+  forex: {},
   error: null,
   details: [],
 };
@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LOADING:
       return {
-        forex: [...state.forex],
+        forex: { ...state.forex },
         loading: true,
         error: null,
       };
@@ -57,7 +57,7 @@ const reducer = (state = initialState, action) => {
     case FETCH_ERROR:
       return {
         loading: false,
-        forex: [],
+        forex: {},
         error: action.payload,
       };
     default:
