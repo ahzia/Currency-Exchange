@@ -16,7 +16,7 @@ const ExchangeCard = ({ name, rate, baseCurrency }) => (
 
 ExchangeCard.propTypes = {
   name: PropTypes.string.isRequired,
-  rate: PropTypes.string.isRequired,
+  rate: PropTypes.number.isRequired,
   baseCurrency: PropTypes.string.isRequired,
 };
 

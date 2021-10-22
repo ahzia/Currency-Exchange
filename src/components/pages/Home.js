@@ -46,7 +46,7 @@ const Home = ({ data }) => {
 };
 
 Home.propTypes = {
-  data: PropTypes.instanceOf(Array).isRequired,
+  data: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Home;
