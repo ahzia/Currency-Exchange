@@ -2,11 +2,11 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import forexReducer from './forexData/forex';
-import forexDetailsReducer from './forexData/forexDetails';
+import forexExchangeReducer from './forexData/forexExchange';
 
 const reducer = combineReducers({
   forex: forexReducer,
-  forexDetails: forexDetailsReducer,
+  forexDetails: forexExchangeReducer,
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));

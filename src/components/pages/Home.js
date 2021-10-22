@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import Card from '../Card';
+import CurrencyCard from '../CurrencyCard';
 
 /* eslint-disable react/prop-types */
 const Home = ({ data }) => {
@@ -17,21 +17,27 @@ const Home = ({ data }) => {
   function handleOnCardClick(currency) {
     history.push(`/details/${currency}`);
   }
-  const rates = Object.entries(data.forex.rates);
+  const { forex } = data;
+  const rates = Object.entries(forex.rates);
   return (
     <div className="flex flex-col">
       <p>
         Last Update:
-        {data.forex.date}
+        {forex.date}
       </p>
       <p>
         Base Currency:
-        {data.forex.base}
+        {forex.base}
       </p>
       <div className="grid grid-cols-2 md:grid-cols-6">
-        {rates.map((rate) => (
-          <div key={rate[0]} onClick={() => handleOnCardClick(rate[0])} role="button" onKeyDown={() => handleOnCardClick(rate[0])} tabIndex={0}>
-            <Card name={rate[0]} value={rate[1]} />
+        {rates.map((currencyData) => (
+          // currencyData[0] is the Currency name and currencyData[1] is the Exchange rate
+          <div key={currencyData[0]} onClick={() => handleOnCardClick(currencyData[0])} role="button" onKeyDown={() => handleOnCardClick(currencyData[0])} tabIndex={0}>
+            <CurrencyCard
+              name={currencyData[0]}
+              rate={currencyData[1]}
+              baseCurrency={forex.base}
+            />
           </div>
         ))}
       </div>

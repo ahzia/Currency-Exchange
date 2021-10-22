@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchRequestForexDetails } from '../../redux/forexData/forexDetails';
+import { fetchRequestForexExchange } from '../../redux/forexData/forexExchange';
 import CurrencyExchangeRates from '../CurrencyExchangeRates';
 
 const Details = ({ match }) => {
@@ -9,7 +9,7 @@ const Details = ({ match }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchRequestForexDetails(currencyName));
+    dispatch(fetchRequestForexExchange(currencyName));
   }, []);
 
   const forexRates = useSelector((state) => state.forexDetails);

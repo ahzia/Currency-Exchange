@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import DetailsCard from './DetailsCard';
+import ExchangeCard from './ExchangeCard';
 
 const CurrencyExchangeRates = ({ currency, data }) => {
   if (data.loading) {
@@ -12,22 +12,22 @@ const CurrencyExchangeRates = ({ currency, data }) => {
       <p>error</p>
     );
   }
-  if (!data.details[currency]) {
+  if (!data.exchange[currency]) {
     return (
       <p>No Result for this currency</p>
     );
   }
-  const rates = Object.entries(data.details[currency].rates);
+  const rates = Object.entries(data.exchange[currency].rates);
   return (
     <div className="flex flex-col">
       <p>
         Last Update:
-        {data.details[currency].date}
+        {data.exchange[currency].date}
       </p>
       <div className="grid grid-cols-2 md:grid-cols-6">
-        {rates.map((rate) => (
-          <div key={rate[0]}>
-            <DetailsCard name={rate[0]} value={rate[1]} />
+        {rates.map((currencyData) => (
+          <div key={currencyData[0]}>
+            <ExchangeCard name={currencyData[0]} rate={currencyData[1]} baseCurrency={currency} />
           </div>
         ))}
       </div>
