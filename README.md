@@ -27,6 +27,8 @@
 [Link to Live Demo](https://ahzia.github.io/Currency-Exchange/)
 
 
+[Link to Pitch Video](https://www.loom.com/share/8096a64385274ba0b9f422e184af0bf5)
+
 ## 🔥 Getting Started
 
 ### **Setup**
