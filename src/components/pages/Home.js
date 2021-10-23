@@ -19,16 +19,28 @@ const Home = ({ data }) => {
   }
   const { forex } = data;
   const rates = Object.entries(forex.rates);
+  const currencyLowerCase = forex.base.toLowerCase();
+  const currencyClass = `currency-flag currency-flag-xl currency-flag-${currencyLowerCase}`;
   return (
-    <div className="flex flex-col">
-      <p>
-        Last Update:
-        {forex.date}
-      </p>
-      <p>
-        Base Currency:
+    <div className="content-container">
+      <div className="page-header">
+        <div className="m-auto">
+          <div className={currencyClass} />
+        </div>
+        <div className="m-auto">
+          <p className="font-bold text-xl">
+            {forex.base}
+          </p>
+          <p>
+            Last Update:
+            {forex.date}
+          </p>
+        </div>
+      </div>
+      <div className="bg-gray-700 text-pink-500 mx-4  ">
+        Exchange Rates for base currency:
         {forex.base}
-      </p>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-6">
         {rates.map((currencyData) => (
           // currencyData[0] is the Currency name and currencyData[1] is the Exchange rate

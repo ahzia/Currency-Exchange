@@ -7,6 +7,7 @@ import Favorite from './components/pages/Favorite';
 import Home from './components/pages/Home';
 import Details from './components/pages/Details';
 import { fetchRequestForexRates } from './redux/forexData/forex';
+import './flags.css';
 
 const App = () => {
   const dispatch = useDispatch();
