@@ -1,0 +1,55 @@
+@import-normalize;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .sidebar-icon {
+    @apply relative flex items-center justify-center 
+    h-12 w-12 mt-2 mb-2 my-auto xl:mx-auto
+  hover:bg-pink-600 bg-gray-800 
+  text-pink-500 hover:text-white
+    rounded-3xl hover:rounded-xl
+    transition-all duration-300 ease-linear
+    cursor-pointer shadow-lg ;
+  }
+
+  .sidebar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md
+    text-white bg-gray-900 
+    text-xs font-bold 
+    transition-all duration-100 xl:scale-0 origin-left;
+  }
+
+  .content-container {
+    @apply flex flex-col 
+    bg-gray-700
+    m-0 
+    overflow-hidden
+    mb-16
+    sm:mb-0
+    sm:ml-16;
+  }
+
+  .page-header{
+    @apply flex items-center hover:bg-pink-600 bg-gray-800 
+    text-pink-400 hover:text-white h-40
+    transition-all duration-300 ease-linear
+    cursor-pointer shadow-lg
+  }
+
+  .currency-card{
+    @apply flex flex-col justify-between hover:bg-pink-600 bg-gray-800 
+    text-pink-400 hover:text-white h-52
+    transition-all duration-300 ease-linear
+    cursor-pointer shadow-lg px-2 py-2
+  }
+
+  .exchange-card{
+    @apply flex items-center justify-between hover:bg-pink-600 bg-gray-800 
+    text-pink-400 hover:text-white h-20
+    transition-all duration-300 ease-linear
+    cursor-pointer shadow-lg px-2 py-2
+  }
+}
